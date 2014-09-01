@@ -19,7 +19,7 @@ angular.module("playlytics")
 
           if( searchFilter.length > 0 ) {
             SpotifyService.search( searchFilter ).success(function(data) {
-              scope.tracks = data.tracks.items;
+              scope.tracks = SpotifyService.parseTracks( data.tracks.items );
             });
           }
         }
