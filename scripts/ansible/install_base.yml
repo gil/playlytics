@@ -1,0 +1,21 @@
+---
+- name: Configure machines basics
+  hosts: all
+  sudo: yes
+  roles:
+    - swap
+    - extra-repositories
+    - basics
+    - iptables
+    - selinux
+
+- name: Configure deployment directory
+  hosts:
+    - client
+    - app
+  sudo: yes
+  roles:
+    - deployment
+
+- include: ../../client/scripts/ansible/playbook.yml
+# - include: ../../rails/scripts/ansible/playbook.yml

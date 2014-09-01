@@ -1,0 +1,11 @@
+---
+- name: Install nginx web server
+  hosts: client
+  sudo: yes
+  roles:
+    - nginx
+
+- name: Install client build dependencies
+  hosts: client
+  roles:
+    - client-basics
