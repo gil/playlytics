@@ -30,15 +30,22 @@
 
 .playlists {
   border-top: 1px solid #222326;
-  padding-top: 20px;
+  padding: 20px 0 0 0;
 }
 
 .playlist {
   color: #88898C;
   cursor: pointer;
+  padding: 5px 0 5px 23px;
 }
 
 .playlist:hover,
 .playlist-selected {
   color: #DFE0E6;
+  list-style-type: none;
+}
+
+.playlist-selected {
+  border-left: 3px solid #84BD00;
+  padding-left: 20px;
 }
