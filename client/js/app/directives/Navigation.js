@@ -8,10 +8,6 @@ angular.module("playlytics")
 
       restrict: "A",
 
-      scope: {
-        photos: "="
-      },
-
       link: function(scope, element, attrs) {
         // console.log( scope, element, attrs );
       }
