@@ -2,9 +2,7 @@
 
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
-    plumber = require('gulp-plumber'),
     filter = require('gulp-filter'),
-    coffee = require('gulp-coffee'),
     gutil = require('gulp-util'),
     tinylr = require('tiny-lr'),
     embedlr = require('gulp-embedlr'),
@@ -28,7 +26,7 @@ var gulp = require('gulp'),
 var paths = {
   src: {
     index : 'index.tpl.html',
-    coffee : 'coffee/**/*.coffee',
+    js : 'js/**/*.js',
     style : 'style/**/*.css',
     vendorScripts : 'vendorScripts',
     vendorStyles : 'vendorStyles',
@@ -44,6 +42,7 @@ var paths = {
     build : 'build/',
     images : 'build/img',
     style : 'build/style',
+    all : 'build/**/*'
   }
 };
 
@@ -51,20 +50,13 @@ var paths = {
 ** BUILD TASKS
 ***/
 
-function buildCoffee() {
-  return gulp.src( paths.src.coffee )
-    .pipe( coffee({ sourceMap: true }) )
-    .pipe( gulp.dest( paths.dest.jsPath ) );
-}
-gulp.task('coffee', ['clean'], buildCoffee);
-
 function buildHtmlIncludes() {
   return gulp.src( paths.src.index )
     .pipe( includeSources({ cwd : paths.dest.build }) )
     .pipe( rename('index.html') )
     .pipe( gulp.dest( paths.dest.indexPath ) );
 }
-gulp.task('html-includes', ['coffee', 'templates'], buildHtmlIncludes);
+gulp.task('html-includes', ['templates'], buildHtmlIncludes);
 
 function buildTemplates() {
   return gulp.src( paths.src.templates )
@@ -96,7 +88,7 @@ function getKarmaConf() {
 function buildTest(done) {
   karma.start( getKarmaConf(), done );
 }
-gulp.task('test', ['coffee', 'templates'], buildTest);
+gulp.task('test', ['copy-assets', 'templates'], buildTest);
 
 function buildClean() {
   return gulp.src( paths.dest.build , {read: false} )
@@ -115,6 +107,7 @@ function getAssets() {
 
   var assets = {};
   assets[ paths.src.style ] = paths.dest.style;
+  assets[ paths.src.js ] = paths.dest.jsPath;
 
   var vendorAssets = fs.readFileSync( paths.src.vendorAssets ).toString().split('\n');
   _.each(vendorAssets, function(asset){ var parts = asset.split('='); assets[parts[0]] = parts[1]; });
@@ -140,17 +133,17 @@ function buildCompressCode() {
     .pipe(usemin({
       css: [ minifyCss(), 'concat', rev() ],
       html: [ minifyHtml({ empty: true, conditionals: true, spare: true, quotes: true }) ],
-      js: [ ngmin(), uglify({ outSourceMap: true }), rev() ]
+      js: [ ngmin(), uglify({ outSourceMap: false }), rev() ]
     }))
     .pipe( gulp.dest( paths.dest.build ) );
 }
-gulp.task('compress-code', ['clean', 'coffee', 'templates', 'test', 'html-includes', 'copy-assets'], buildCompressCode);
+gulp.task('compress-code', ['clean', 'templates', 'test', 'html-includes', 'copy-assets'], buildCompressCode);
 
 function buildCleanTemp() {
   return gulp.src([paths.dest.jsPath, paths.dest.style], {read: false})
     .pipe( clean() );
 }
-gulp.task('build', ['clean', 'html-includes', 'templates', 'coffee', 'test', 'compress-images', 'compress-code'], buildCleanTemp);
+gulp.task('build', ['clean', 'html-includes', 'templates', 'test', 'compress-images', 'compress-code'], buildCleanTemp);
 
 /*******
 ** DEV TASKS
@@ -204,15 +197,7 @@ gulp.task('default', initialLivereloadTasks, function() {
     gutil.log( gutil.colors.magenta( _.last(e.path.split('/')) ) + ' was changed' );
   });
 
-  watch({ glob: 'coffee/**/*.coffee' })
-    .pipe( filter( filterDeleted( function(filePath){
-      return filePath.replace(/\/coffee\//g, '/js/').replace(/\.coffee$/, '.js');
-    } ) ) )
-    .pipe( plumber() )
-    .pipe( coffee({ sourceMap: true }) )
-    .pipe( gulp.dest('build/js/') );
-
-  _.each(['style', 'img'], function(path) {
+  _.each(['js', 'style', 'img'], function(path) {
     watch({ glob: path + '/**/*' })
       .pipe( filter(filterDeleted( function (filePath) {
         return filePath.replace(/\/client\//, '/client/build/');
@@ -220,11 +205,11 @@ gulp.task('default', initialLivereloadTasks, function() {
       .pipe( gulp.dest('build/' + path + '/') );
   });
 
-  gulp.watch('build/**/*').on('change', _.debounce(function(e) {
+  gulp.watch(paths.dest.all).on('change', _.debounce(function(e) {
     lr.changed({ body: { files: [require('path').relative(__dirname, e.path)] } });
   }, 200));
 
-  gulp.watch('build/js/**/*.js').on('change', _.debounce(function() {
+  gulp.watch(paths.dest.js).on('change', _.debounce(function() {
     karma.start( getKarmaConf(), function(){ /* Don't stop watching */ } );
   }, 200));
 

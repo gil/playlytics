@@ -24,5 +24,11 @@
   "node" : true,
   "nonstandard" : true,
   "predef" : [
+    "angular",
+    "describe",
+    "beforeEach",
+    "inject",
+    "it",
+    "expect"
   ]
 }
