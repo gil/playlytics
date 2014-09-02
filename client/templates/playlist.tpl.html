@@ -39,4 +39,12 @@
     </tbody>
   </table>
 
+  <aside class="tags-area">
+    <h5 class="playlist-subtitle">TAGS</h5>
+
+    <tags-input ng-model="playlist.tags" placeholder="Click here to add tags...">
+      <auto-complete source="loadTags($query)" min-length="0" max-results-to-show="100"></auto-complete>
+    </tags-input>
+  </aside>
+
 </div>

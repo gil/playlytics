@@ -1,10 +1,11 @@
 "use strict";
 
 angular.module("playlytics")
-  .controller("PlaylistController", function($scope, playlist, PlaylistService) {
+  .controller("PlaylistController", function($scope, playlist, PlaylistService, TagService) {
 
     $scope.playlist = playlist;
     $scope.playlist.tracks = $scope.playlist.tracks || [];
+    $scope.playlist.tags = $scope.playlist.tags || [];
 
     $scope.addTrack = function(track) {
       if( !_.findWhere($scope.playlist.tracks, { id : track.id }) ) {
@@ -49,6 +50,10 @@ angular.module("playlytics")
       } else {
         PlaylistService.save( $scope.playlist );
       }
+    };
+
+    $scope.loadTags = function(query) {
+      return TagService.search(query);
     };
 
   });
