@@ -9,7 +9,12 @@ angular.module("playlytics", ["appTemplates", "ui.router"])
       .state("playlist", {
         url: "/playlist/:id",
         templateUrl: "templates/playlist.tpl.html",
-        controller: "PlaylistController"
+        controller: "PlaylistController",
+        resolve: {
+          playlist : ["PlaylistService", "$stateParams", function(PlaylistService, $stateParams) {
+            return PlaylistService.read( $stateParams.id );
+          }]
+        }
       });
 
     $httpProvider.defaults.headers.common = {

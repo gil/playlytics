@@ -13,6 +13,7 @@ angular.module("playlytics")
           return {
             name : track.name,
             artist : ( track.artists && track.artists.length > 0 ? track.artists[0].name : "N/A" ),
+            albumName : ( track.album ? track.album.name : null ),
             albumCover : ( track.album && track.album.images && track.album.images.length > 0 ? track.album.images[0].url : null ),
             duration : track.duration_ms,
             popularity : track.popularity

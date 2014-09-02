@@ -2,6 +2,35 @@
 
 <div class="screen">
 
-  <div search></div>
+  <div search add-track="addTrack(track)"></div>
+
+  <header class="playlist-title">
+    <h5 class="playlist-subtitle">PLAYLIST</h5>
+    <h1 class="playlist-name">{{ playlist.name }}</h1>
+
+    <div class="playlist-info">{{ playlist.tracks.length }} songs, 0 hr 0 min • Coolness: 32</div>
+  </header>
+
+  <table class="playlist-tracks">
+    <thead>
+      <tr>
+        <th>SONG</th>
+        <th>ARTIST</th>
+        <th>ALBUM</th>
+        <th class="track-duration"><i class="fa fa-clock-o"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="playlist-track" ng-repeat="track in playlist.tracks">
+        <td>{{ track.name }}</td>
+        <td>{{ track.artist }}</td>
+        <td>{{ track.albumName }}</td>
+        <td class="track-duration">{{ track.duration | duration }}</td>
+      </tr>
+      <tr class="playlist-track" ng-show="playlist.tracks.length === 0">
+        <td colspan="4">This playlist is empty. Why don't you search for some cool songs? :)</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>

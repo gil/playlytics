@@ -1,61 +1,48 @@
-.search-box {
-  padding: 20px;
-  background-color: #3E3E40;
-  font-size: 16px;
+.playlist-title {
+  margin-top: 20px;
 }
 
-.search-input {
-  width: 400px;
-  height: 30px;
-  padding: 5px 12px 5px 25px;
-  margin-left: 10px;
-  border-radius: 3px;
-  border: 1px solid #DFE0E6;
-  color: #3E3E40;
-  vertical-align: middle;
-  line-height: 19px;
-  font-size: 14px;
-  background: url('../img/search.png') 2px 4px no-repeat #DFE0E6;
-}
-
-.search-results {
-  background-color: #222226;
-  padding: 15px 10px 15px 10px;
-}
-
-.search-track {
-  list-style-type: none;
-  cursor: pointer;
-  background-color: #2E2F33;
-  margin-bottom: 2px;
-  padding: 5px;
-}
-
-.search-track:hover {
-  background-color: #46484E;
-}
-
-.search-track-image {
-  width: 50px;
-  height: 50px;
-  vertical-align: top;
-}
-
-.track-data {
-  display: inline-block;
-  margin: 6px 0 0 20px;
-}
-
-.track-name {
-  color: #FFF;
-}
-
-.track-artist {
+.playlist-subtitle {
   color: #88898C;
   font-size: 12px;
+  margin: 0 0 5px 0;
 }
 
-.spinner {
-  position: relative;
-  margin: 2px 0 0 12px;
+.playlist-name {
+  margin: 0;
+}
+
+.playlist-info {
+  color: #88898C;
+  margin: 20px 0;
+  padding: 8px 0;
+  border-top: 1px solid #222326;
+  border-bottom: 1px solid #222326;
+}
+
+.playlist-tracks {
+  width: 100%;
+}
+
+.playlist-tracks th {
+  color: #88898C;
+  font-size: 12px;
+  padding: 12px 5px;
+}
+
+.track-duration {
+  text-align: right;
+}
+
+.playlist-track {
+  cursor: pointer;
+  border-top: 1px solid #222226;
+}
+
+.playlist-track:hover {
+  background-color: #222226;
+}
+
+.playlist-track td {
+  padding: 8px 5px;
 }

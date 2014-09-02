@@ -2,7 +2,7 @@
 
 describe('something', function() {
 
-  var HomeController = null;
+  var PlaylistController = null;
   beforeEach(module('playlytics'));
 
   beforeEach(inject(function( $injector, _$rootScope_ ) {
@@ -11,7 +11,7 @@ describe('something', function() {
         $rootScope = _$rootScope_,
         $scope = $rootScope.$new();
 
-    HomeController = $controller('HomeController', {
+    PlaylistController = $controller('PlaylistController', {
       '$rootScope': $rootScope,
       '$scope': $scope
     });
@@ -19,7 +19,7 @@ describe('something', function() {
   }));
 
   it('should do something', function() {
-    expect(HomeController).not.toBe(null);
+    expect(PlaylistController).not.toBe(null);
   });
 
 });

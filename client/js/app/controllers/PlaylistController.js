@@ -1,8 +1,14 @@
 "use strict";
 
 angular.module("playlytics")
-  .controller("PlaylistController", function() {
+  .controller("PlaylistController", function($scope, playlist, PlaylistService) {
 
-    console.log( "Playlist!" );
+    $scope.playlist = playlist;
+    $scope.playlist.tracks = $scope.playlist.tracks || [];
+    // PlaylistService.save({});
+
+    $scope.addTrack = function(track) {
+      $scope.playlist.tracks.push(track);
+    };
 
   });
