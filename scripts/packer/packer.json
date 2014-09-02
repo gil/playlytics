@@ -1,0 +1,57 @@
+{
+  "builders": [
+    {
+      "name": "vagrant",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "http://centos.secrel.com.br/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+      "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
+      "iso_checksum_type": "md5",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "3000s",
+      "vm_name": "box",
+      "http_directory": "./",
+      "boot_wait": "10s",
+      "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
+      "http_port_min": 8080,
+      "http_port_max": 9090,
+      "boot_command": [
+        "<esc><wait>",
+        "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg ",
+        "<enter><wait>"
+      ],
+      "disk_size": 30720,
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "2048"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "2"
+        ]
+      ],
+      "virtualbox_version_file": ".vbox_version"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "virtualbox.sh",
+      "only": ["vagrant"]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "./CentOS-6.5-x86_64-minimal.box",
+      "vagrantfile_template": "./Vagrantfile.template",
+      "only": ["vagrant"]
+    }
+  ]
+}
