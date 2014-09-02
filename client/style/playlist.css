@@ -52,6 +52,10 @@
   display: none;
 }
 
+.remove-column {
+  width: 40px;
+}
+
 .playlist-track td {
   padding: 8px 5px;
 }

@@ -18,20 +18,19 @@
         <th>ARTIST</th>
         <th>ALBUM</th>
         <th class="track-duration"><i class="fa fa-clock-o"></i></th>
+        <th class="remove-column"></th>
       </tr>
     </thead>
     <tbody ui-sortable ng-model="playlist.tracks">
       <tr class="playlist-track" ng-repeat="track in playlist.tracks">
-        <td>
-          {{ track.name }}
-          <i class="fa fa-trash-o remove-track" ng-click="removeTrack(track)"></i>
-        </td>
+        <td>{{ track.name }}</td>
         <td>{{ track.artist }}</td>
         <td>{{ track.albumName }}</td>
         <td class="track-duration">{{ track.duration | duration }}</td>
+        <td><i class="fa fa-trash-o remove-track" ng-click="removeTrack(track)"></i></td>
       </tr>
       <tr class="playlist-track" ng-show="playlist.tracks.length === 0">
-        <td colspan="4">This playlist is empty. Why don't you search for some cool songs? :)</td>
+        <td colspan="5">This playlist is empty. Why don't you search for some cool songs? :)</td>
       </tr>
     </tbody>
   </table>
