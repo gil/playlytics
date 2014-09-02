@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("playlytics", ["appTemplates", "ui.router"])
+angular.module("playlytics", ["appTemplates", "ui.router", "ui.sortable"])
   .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $urlRouterProvider.otherwise("/playlist/new");

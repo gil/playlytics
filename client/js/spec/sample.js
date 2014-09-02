@@ -9,11 +9,13 @@ describe('something', function() {
 
     var $controller = $injector.get('$controller'),
         $rootScope = _$rootScope_,
-        $scope = $rootScope.$new();
+        $scope = $rootScope.$new(),
+        playlist = {};
 
     PlaylistController = $controller('PlaylistController', {
       '$rootScope': $rootScope,
-      '$scope': $scope
+      '$scope': $scope,
+      'playlist': playlist
     });
 
   }));

@@ -20,7 +20,7 @@
         <th class="track-duration"><i class="fa fa-clock-o"></i></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody ui-sortable ng-model="playlist.tracks">
       <tr class="playlist-track" ng-repeat="track in playlist.tracks">
         <td>{{ track.name }}</td>
         <td>{{ track.artist }}</td>

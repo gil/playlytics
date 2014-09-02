@@ -4,3 +4,5 @@ bower_components/angular/angular.js
 bower_components/angular-ui-router/release/angular-ui-router.js
 bower_components/spin.js/spin.js
 bower_components/amplify/lib/amplify.store.js
+bower_components/jquery-ui/jquery-ui.js
+bower_components/angular-ui-sortable/sortable.js
