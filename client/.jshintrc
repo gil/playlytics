@@ -24,6 +24,7 @@
   "node" : true,
   "nonstandard" : true,
   "predef" : [
+    "$",
     "_",
     "angular",
     "describe",
