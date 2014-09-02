@@ -45,6 +45,7 @@ Use Packer to make standard CentOS server images, for Vagrant, Amazon's EC2 or o
 cd scripts/packer
 packer build -only=vagrant packer.json
 vagrant box add CentOS-6.5-x86_64-minimal CentOS-6.5-x86_64-minimal.box
+rm CentOS-6.5-x86_64-minimal.box
 ```
 
 ### Start Vagrant
