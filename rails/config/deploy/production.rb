@@ -46,3 +46,32 @@ role :db,  %w{deployer@playlytics}
 
 set :repo_url, 'git@github.com:gil/playlytics.git'
 set :branch, 'new_version'
+
+namespace :deploy do
+  desc 'Install client dependencies'
+  task :client_dependencies do
+    on roles(:app) do
+
+      within release_path.join('client') do
+        execute :npm, :install
+        execute :bower, :install, "--config.interactive=false"
+      end
+
+    end
+  end
+
+  before :updated, :client_dependencies
+
+  desc 'Build client'
+  task :build_client do
+    on roles(:app) do
+
+      within release_path.join('client') do
+        execute :gulp, :build
+      end
+
+    end
+  end
+
+  after :updated, :build_client
+end
