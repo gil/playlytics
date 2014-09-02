@@ -21,7 +21,7 @@
         <th>ALBUM</th>
         <th class="numeric-column"><i class="fa fa-thumbs-o-up"></i></th>
         <th class="numeric-column"><i class="fa fa-clock-o"></i></th>
-        <th class="remove-column"></th>
+        <th class="actions-column"></th>
       </tr>
     </thead>
     <tbody ui-sortable ng-model="playlist.tracks">
@@ -31,7 +31,15 @@
         <td>{{ track.albumName }}</td>
         <td class="numeric-column">{{ track.popularity }}</td>
         <td class="numeric-column">{{ track.duration | duration }}</td>
-        <td><i class="fa fa-trash-o remove-track" ng-click="removeTrack(track)"></i></td>
+        <td class="actions-column">
+          <a href="http://open.spotify.com/track/{{ track.id }}" target="_blank">
+            <i class="fa fa-music track-action"></i>
+          </a>
+          <a href="http://www.metrolyrics.com/search.html?search={{ track.artist }} - {{ track.name }}" target="_blank">
+            <i class="fa fa-search track-action"></i>
+          </a>
+          <i class="fa fa-trash-o track-action" ng-click="removeTrack(track)"></i>
+        </td>
       </tr>
       <tr class="playlist-track" ng-show="playlist.tracks.length === 0">
         <td colspan="6">This playlist is empty. Why don't you search for some cool songs? :)</td>

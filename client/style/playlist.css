@@ -54,17 +54,18 @@
   background-color: #222226;
 }
 
-.playlist-track:hover .remove-track {
+.playlist-track:hover .track-action {
   display: inline-block;
+}
+
+.track-action {
+  display: none;
+  color: #FFF;
   padding-left: 10px;
 }
 
-.remove-track {
-  display: none;
-}
-
-.remove-column {
-  width: 40px;
+.actions-column {
+  width: 100px;
 }
 
 .playlist-track td {
