@@ -8,7 +8,7 @@
     <h5 class="playlist-subtitle">PLAYLIST</h5>
     <h1 class="playlist-name">{{ playlist.name }}</h1>
 
-    <div class="playlist-info">{{ playlist.tracks.length }} songs, 0 hr 0 min • Coolness: 32</div>
+    <div class="playlist-info">{{ playlist.tracks.length }} songs, {{ playlistDuration() | duration }} • Coolness: 32</div>
   </header>
 
   <table class="playlist-tracks">

@@ -15,4 +15,15 @@ angular.module("playlytics")
       $scope.playlist.tracks = _.without($scope.playlist.tracks, track);
     };
 
+    $scope.playlistDuration = function() {
+
+      var duration = 0;
+
+      _.each($scope.playlist.tracks, function(track) {
+        duration += track.duration;
+      });
+
+      return duration;
+    };
+
   });
