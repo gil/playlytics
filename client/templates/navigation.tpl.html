@@ -7,7 +7,7 @@
 
   <ul class="playlists">
     <li ng-repeat="playlist in playlists" class="playlist" ui-sref="playlist({ id : playlist.id })" ui-sref-active="playlist-selected"><i class="fa fa-fw fa-th-list"></i>&nbsp; {{ playlist.name }}</li>
-    <li class="playlist" ui-sref="playlist({ id : 'new' })" ui-sref-active="playlist-selected"><i class="fa fa-fw fa-th-list"></i>&nbsp; New Playlist</li>
+    <li class="playlist" ui-sref="playlist({ id : 'new' })" ui-sref-active="playlist-selected"><i class="fa fa-fw fa-plus"></i>&nbsp; New Playlist</li>
   </ul>
 
 </nav>
