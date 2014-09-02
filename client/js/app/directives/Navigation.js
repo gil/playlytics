@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("playlytics")
-  .directive("navigation", function(PlaylistService) {
+  .directive("navigation", function($rootScope, PlaylistService) {
     return {
 
       templateUrl: "templates/navigation.tpl.html",
@@ -10,10 +10,12 @@ angular.module("playlytics")
 
       link: function(scope) {
 
-        PlaylistService.list().success(function(playlists) {
-          scope.playlists = playlists;
-        });
+        function updateList() {
+          scope.playlists = PlaylistService.list();
+        }
 
+        $rootScope.$on("playlistSaved", updateList);
+        updateList();
       }
 
     };

@@ -10,3 +10,22 @@ body {
 .screen {
   margin: 20px 20px 20px 270px;
 }
+
+button {
+  background-color: #84BD00;
+  border: 1px solid #84BD00;
+  border-radius: 500px;
+  color: #DFE0E6;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 0 15px;
+  height: 28px;
+}
+
+button:hover {
+  background-color: #9FE600;
+}
+
+button:focus {
+  outline: none;
+}

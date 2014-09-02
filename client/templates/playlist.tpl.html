@@ -2,11 +2,13 @@
 
 <div class="screen">
 
-  <div search add-track="addTrack(track)"></div>
+  <div search add-track="addTrack(track)" save-playlist="savePlaylist()"></div>
 
   <header class="playlist-title">
     <h5 class="playlist-subtitle">PLAYLIST</h5>
-    <h1 class="playlist-name">{{ playlist.name }}</h1>
+    <h1 class="playlist-name">
+      <input class="playlist-name-input" ng-model="playlist.name" />
+    </h1>
 
     <div class="playlist-info">{{ playlist.tracks.length }} songs, {{ playlistDuration() | duration }} • Playlist Coolness: {{ coolnessFactor() }}</div>
   </header>

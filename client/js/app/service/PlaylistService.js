@@ -2,32 +2,38 @@
 "use strict";
 
 angular.module("playlytics")
-  .service("PlaylistService", function() {
+  .service("PlaylistService", function($rootScope) {
     return {
 
       list: function() {
-        return {
-          success: function(callback) {
-            callback([
-              { id : 0, name : "Mood Booster" },
-              { id : 1, name : "Weekend Chill-Out" },
-              { id : 2, name : "Re-Energize" }
-            ]);
-          }
-        };
+        return ( amplify.store("playlists") || [] );
       },
 
       read: function(id) {
+
+        var playlist = { name : "New Playlist" };
+
         if( id !== "new" ) {
-          return { id: 0, name : "Mood Booster" };
+          playlist = ( _.findWhere( this.list(), { id : parseInt(id, 10) } ) || playlist );
         }
 
-        return { name : "New Playlist" };
+        return playlist;
       },
 
       save: function(playlist) {
-        console.log( playlist );
-        console.log( amplify.store() );
+
+        var playlists = this.list();
+        var oldIndex = _.findIndex(playlists, { id : playlist.id });
+
+        if( oldIndex > -1 ) {
+          playlists[oldIndex] = playlist;
+        } else {
+          playlist.id = playlists.length;
+          playlists.push(playlist);
+        }
+
+        amplify.store("playlists", playlists);
+        $rootScope.$emit("playlistSaved");
       }
 
     };

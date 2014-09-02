@@ -9,7 +9,8 @@ angular.module("playlytics")
       restrict: "A",
 
       scope: {
-        addTrack: "&"
+        addTrack: "&",
+        savePlaylist: "&"
       },
 
       link: function(scope, element) {
@@ -20,18 +21,26 @@ angular.module("playlytics")
         scope.selectedTrack = -1;
         scope.tracks = [];
 
+        function showSpinner() {
+          spinner = new Spinner({lines: 8, length: 4, width: 4, radius: 5, speed: 2, color: "#FFF"}).spin(spinnerSpan);
+        }
+
+        function hideSpinner() {
+          spinner.stop();
+        }
+
         function searchAfterDelay() {
 
           if( scope.searchFilter && scope.searchFilter.length > 0 ) {
 
-            spinner = new Spinner({lines: 8, length: 4, width: 4, radius: 5, speed: 2, color: "#FFF"}).spin(spinnerSpan);
+            showSpinner();
 
             SpotifyService.search( scope.searchFilter )
               .success(function(data) {
                 scope.tracks = SpotifyService.parseTracks( data.tracks.items );
-                spinner.stop();
+                hideSpinner();
               })
-              .error(function() { spinner.stop(); });
+              .error(function() { hideSpinner(); });
           }
         }
 
@@ -61,6 +70,12 @@ angular.module("playlytics")
           scope.addTrack({ track : track });
           scope.searchFilter = "";
           scope.tracks = [];
+        };
+
+        scope.saveWithFeedback = function() {
+          showSpinner();
+          scope.savePlaylist();
+          setTimeout(hideSpinner, 200); // TODO : Just to make it look like we have a server
         };
 
       }

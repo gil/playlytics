@@ -5,7 +5,6 @@ angular.module("playlytics")
 
     $scope.playlist = playlist;
     $scope.playlist.tracks = $scope.playlist.tracks || [];
-    // PlaylistService.save({});
 
     $scope.addTrack = function(track) {
       if( !_.findWhere($scope.playlist.tracks, { id : track.id }) ) {
@@ -38,6 +37,18 @@ angular.module("playlytics")
       });
 
       return parseInt(coolness, 10);
+    };
+
+    $scope.savePlaylist = function() {
+
+      if( $scope.playlist.name === "New Playlist" ) {
+
+        $scope.playlist.name = "Hey, you can change me!";
+        $(".playlist-name-input").focus();
+
+      } else {
+        PlaylistService.save( $scope.playlist );
+      }
     };
 
   });

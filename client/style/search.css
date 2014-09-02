@@ -60,3 +60,7 @@
   position: relative;
   margin: 2px 0 0 12px;
 }
+
+.save-button {
+  float: right;
+}

@@ -12,6 +12,16 @@
   margin: 0;
 }
 
+.playlist-name-input {
+  background-color: #121314;
+  width: 100%;
+  border: none;
+}
+
+.playlist-name-input:focus {
+  outline: 1px solid #000;
+}
+
 .playlist-info {
   color: #88898C;
   margin: 20px 0;

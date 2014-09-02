@@ -2,6 +2,8 @@
   Search:
   <input class="search-input" ng-model="searchFilter" ng-keyup="search($event)" />
   <span class="spinner"></span>
+
+  <button class="save-button" ng-click="saveWithFeedback()">SAVE PLAYLIST</button>
 </div>
 
 <ul class="search-results" ng-show="tracks.length > 0">
