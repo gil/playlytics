@@ -53,3 +53,16 @@ rm CentOS-6.5-x86_64-minimal.box
 ```
 vagrant up
 ```
+
+### Add your key for SSH
+
+```
+cat ~/.ssh/id_rsa.pub | ssh vagrant@localhost -p 2222 'cat >> ~/.ssh/authorized_keys && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys'
+```
+
+### Deploy app
+
+```
+cd rails/
+bundle exec cap development deploy
+```
