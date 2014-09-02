@@ -30,8 +30,9 @@
   padding: 12px 5px;
 }
 
-.track-duration {
+.numeric-column {
   text-align: right;
+  width: 80px;
 }
 
 .playlist-track {

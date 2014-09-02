@@ -26,4 +26,16 @@ angular.module("playlytics")
       return duration;
     };
 
+    $scope.coolnessFactor = function() {
+
+      var playlistDuration = $scope.playlistDuration();
+      var coolness = 0;
+
+      _.each($scope.playlist.tracks, function(track) {
+        coolness += track.duration * ( track.popularity || 0 ) / playlistDuration;
+      });
+
+      return parseInt(coolness, 10);
+    };
+
   });
