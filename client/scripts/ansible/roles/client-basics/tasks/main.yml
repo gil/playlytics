@@ -6,6 +6,7 @@
     - bower
     - gulp
     - phantomjs
+    - libpng-devel
 
 - name: PhantomJS dependencies
   sudo: yes
