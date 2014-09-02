@@ -43,8 +43,8 @@ describe('PlaylistService', function() {
 
     PlaylistService.save({});
     PlaylistService.save({});
-    expect( playlistLocalStorage.playlists[0].id ).toBe( 0 );
-    expect( playlistLocalStorage.playlists[1].id ).toBe( 1 );
+    expect( playlistLocalStorage.playlists[0].id ).toBe( 1 );
+    expect( playlistLocalStorage.playlists[1].id ).toBe( 2 );
   });
 
   it('should read playlists', function() {
@@ -52,7 +52,7 @@ describe('PlaylistService', function() {
     var playlist = { name : 'Test 1' };
     PlaylistService.save(playlist);
 
-    playlist = PlaylistService.read(0);
+    playlist = PlaylistService.read(1);
     expect( playlist.name ).toEqual( 'Test 1' );
   });
 
@@ -61,7 +61,7 @@ describe('PlaylistService', function() {
     var playlist = { name : 'Test 1' };
     PlaylistService.save(playlist);
 
-    playlist = PlaylistService.read(0);
+    playlist = PlaylistService.read(1);
     playlist.name = 'Test 2';
     PlaylistService.save(playlist);
 

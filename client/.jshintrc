@@ -35,6 +35,8 @@
     "expect",
     "spyOn",
     "Spinner",
-    "amplify"
+    "amplify",
+    "AmCharts",
+    "moment"
   ]
 }

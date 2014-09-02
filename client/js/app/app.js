@@ -15,6 +15,16 @@ angular.module("playlytics", ["appTemplates", "ui.router", "ui.sortable", "ngTag
             return PlaylistService.read( $stateParams.id );
           }]
         }
+      })
+      .state("analytics", {
+        url: "/playlist/:id/analytics",
+        templateUrl: "templates/analytics.tpl.html",
+        controller: "AnalyticsController",
+        resolve: {
+          playlist : ["PlaylistService", "$stateParams", function(PlaylistService, $stateParams) {
+            return PlaylistService.read( $stateParams.id );
+          }]
+        }
       });
 
     $httpProvider.defaults.headers.common = {

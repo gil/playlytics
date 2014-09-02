@@ -10,6 +10,7 @@ angular.module("playlytics")
     $scope.addTrack = function(track) {
       if( !_.findWhere($scope.playlist.tracks, { id : track.id }) ) {
         $scope.playlist.tracks.push(track);
+        storeAnalytics();
       }
     };
 
@@ -55,5 +56,14 @@ angular.module("playlytics")
     $scope.loadTags = function(query) {
       return TagService.search(query);
     };
+
+    function storeAnalytics() {
+
+      $scope.playlist.analytics = $scope.playlist.analytics || [];
+      $scope.playlist.analytics.push({
+        "timestamp": moment().format("MM/DD HH:mm"),
+        "coolness": $scope.coolnessFactor()
+      });
+    }
 
   });

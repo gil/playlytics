@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("playlytics")
-  .directive("search", function(SpotifyService) {
+  .directive("search", function($stateParams, SpotifyService) {
     return {
 
       templateUrl: "templates/search.tpl.html",
@@ -20,6 +20,8 @@ angular.module("playlytics")
         var searchTimeout = null;
         scope.selectedTrack = -1;
         scope.tracks = [];
+
+        scope.playlistId = $stateParams.id;
 
         function showSpinner() {
           spinner = new Spinner({lines: 8, length: 4, width: 4, radius: 5, speed: 2, color: "#FFF"}).spin(spinnerSpan);

@@ -27,7 +27,7 @@ angular.module("playlytics")
         if( oldIndex > -1 ) {
           playlists[oldIndex] = playlist;
         } else {
-          playlist.id = playlists.length;
+          playlist.id = playlists.length + 1;
           playlists.push(playlist);
         }
 

@@ -61,6 +61,8 @@
   margin: 2px 0 0 12px;
 }
 
-.save-button {
+.save-button,
+.analytics-button {
   float: right;
+  margin-left: 10px;
 }

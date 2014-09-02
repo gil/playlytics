@@ -1,0 +1,15 @@
+<nav navigation></nav>
+
+<div class="screen">
+
+  <header class="playlist-title">
+    <h5 class="playlist-subtitle">ANALYTICS</h5>
+    <h1 class="playlist-name" ui-sref="playlist({ id : playlist.id })">
+      {{ playlist.name }}
+    </h1>
+
+    <div class="playlist-info">{{ playlist.tracks.length }} songs • ?</div>
+  </header>
+
+  <div id="analyticsChart"></div>
+</div>

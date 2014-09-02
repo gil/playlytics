@@ -7,3 +7,7 @@ bower_components/amplify/lib/amplify.store.js
 bower_components/jquery-ui/jquery-ui.js
 bower_components/angular-ui-sortable/sortable.js
 bower_components/ng-tags-input/ng-tags-input.js
+bower_components/amcharts/dist/amcharts/amcharts.js
+bower_components/amcharts/dist/amcharts/serial.js
+bower_components/amcharts/dist/amcharts/themes/dark.js
+bower_components/momentjs/moment.js
