@@ -17,6 +17,8 @@ angular.module("playlytics")
         var spinnerSpan = element.find(".spinner")[0];
         var spinner = null;
         var searchTimeout = null;
+        scope.selectedTrack = -1;
+        scope.tracks = [];
 
         function searchAfterDelay() {
 
@@ -33,13 +35,30 @@ angular.module("playlytics")
           }
         }
 
-        scope.search = function() {
-          scope.tracks = [];
-          clearTimeout(searchTimeout);
-          searchTimeout = setTimeout(searchAfterDelay, 600);
+        scope.search = function(e) {
+
+          var keycode = (e.keyCode || e.which);
+
+          if( keycode === 38 ) {
+            scope.selectedTrack = Math.max( scope.selectedTrack - 1, 0 );
+            e.preventDefault();
+          } else if( keycode === 40 ) {
+            scope.selectedTrack = Math.min( scope.selectedTrack + 1, scope.tracks.length - 1 );
+            e.preventDefault();
+          } else if( keycode === 13 ) {
+            if( scope.selectedTrack > -1 ) {
+              scope.selectTrack( scope.tracks[scope.selectedTrack] );
+            }
+          } else {
+
+            scope.tracks = [];
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(searchAfterDelay, 600);
+
+          }
         };
 
-        scope.trackClick = function(track) {
+        scope.selectTrack = function(track) {
           scope.addTrack({ track : track });
           scope.searchFilter = "";
           scope.tracks = [];

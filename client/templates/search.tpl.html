@@ -1,11 +1,11 @@
 <div class="search-box">
   Search:
-  <input class="search-input" ng-model="searchFilter" ng-keyup="search()" />
+  <input class="search-input" ng-model="searchFilter" ng-keyup="search($event)" />
   <span class="spinner"></span>
 </div>
 
 <ul class="search-results" ng-show="tracks.length > 0">
-  <li ng-repeat="track in tracks" class="search-track" ng-click="trackClick(track)">
+  <li ng-repeat="track in tracks" class="search-track" ng-class="{ 'selected-track': selectedTrack === $index }" ng-click="selectTrack(track)">
     <img class="search-track-image" ng-src="{{ track.albumCover }}" />
     <div class="track-data">
       <div class="track-name">{{ track.name }}</div>

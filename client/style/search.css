@@ -31,7 +31,8 @@
   padding: 5px;
 }
 
-.search-track:hover {
+.search-track:hover,
+.selected-track {
   background-color: #46484E;
 }
 
