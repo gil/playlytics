@@ -22,7 +22,7 @@ angular.module("playlytics")
 
         function searchAfterDelay() {
 
-          if( scope.searchFilter.length > 0 ) {
+          if( scope.searchFilter && scope.searchFilter.length > 0 ) {
 
             spinner = new Spinner({lines: 8, length: 4, width: 4, radius: 5, speed: 2, color: "#FFF"}).spin(spinnerSpan);
 
@@ -45,10 +45,8 @@ angular.module("playlytics")
           } else if( keycode === 40 ) {
             scope.selectedTrack = Math.min( scope.selectedTrack + 1, scope.tracks.length - 1 );
             e.preventDefault();
-          } else if( keycode === 13 ) {
-            if( scope.selectedTrack > -1 ) {
-              scope.selectTrack( scope.tracks[scope.selectedTrack] );
-            }
+          } else if( keycode === 13 && scope.selectedTrack > -1 ) {
+            scope.selectTrack( scope.tracks[scope.selectedTrack] );
           } else {
 
             scope.tracks = [];
