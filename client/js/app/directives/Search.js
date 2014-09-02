@@ -11,6 +11,8 @@ angular.module("playlytics")
       link: function(scope, element) {
 
         var searchInput = element.find(".search-input");
+        var spinnerSpan = element.find(".spinner")[0];
+        var spinner = null;
         var searchTimeout = null;
 
         function searchAfterDelay() {
@@ -18,9 +20,15 @@ angular.module("playlytics")
           var searchFilter = searchInput.val();
 
           if( searchFilter.length > 0 ) {
-            SpotifyService.search( searchFilter ).success(function(data) {
-              scope.tracks = SpotifyService.parseTracks( data.tracks.items );
-            });
+
+            spinner = new Spinner({lines: 8, length: 4, width: 4, radius: 5, speed: 2, color: "#FFF"}).spin(spinnerSpan);
+
+            SpotifyService.search( searchFilter )
+              .success(function(data) {
+                scope.tracks = SpotifyService.parseTracks( data.tracks.items );
+                spinner.stop();
+              })
+              .error(function() { spinner.stop(); });
           }
         }
 

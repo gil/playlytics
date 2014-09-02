@@ -18,7 +18,44 @@
   background: url('../img/search.png') 2px 4px no-repeat #DFE0E6;
 }
 
+.search-results {
+  background-color: #222226;
+  padding: 15px 10px 15px 10px;
+}
+
+.search-track {
+  list-style-type: none;
+  cursor: pointer;
+  background-color: #2E2F33;
+  margin-bottom: 2px;
+  padding: 5px;
+}
+
+.search-track:hover {
+  background-color: #46484E;
+}
+
 .search-track-image {
   width: 50px;
   height: 50px;
+  vertical-align: top;
+}
+
+.track-data {
+  display: inline-block;
+  margin: 6px 0 0 20px;
+}
+
+.track-name {
+  color: #FFF;
+}
+
+.track-artist {
+  color: #88898C;
+  font-size: 12px;
+}
+
+.spinner {
+  position: relative;
+  margin: 2px 0 0 12px;
 }

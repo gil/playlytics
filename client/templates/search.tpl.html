@@ -1,11 +1,15 @@
 <div class="search-box">
   Search:
   <input class="search-input" ng-keyup="search()" />
+  <span class="spinner"></span>
 </div>
 
-<ul>
+<ul class="search-results" ng-show="tracks.length > 0">
   <li ng-repeat="track in tracks" class="search-track">
     <img class="search-track-image" ng-src="{{ track.albumCover }}" />
-    {{ track.artist }} - {{ track.name }}
+    <div class="track-data">
+      <div class="track-name">{{ track.name }}</div>
+      <div class="track-artist">{{ track.artist }}</div>
+    </div>
   </li>
 </ul>
