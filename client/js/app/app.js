@@ -3,13 +3,14 @@
 angular.module("playlytics", ["appTemplates", "ui.router"])
   .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/playlist/new");
 
-    $stateProvider.state("home", {
-      url: "/",
-      templateUrl: "templates/home.tpl.html",
-      controller: "HomeController"
-    });
+    $stateProvider
+      .state("playlist", {
+        url: "/playlist/:id",
+        templateUrl: "templates/playlist.tpl.html",
+        controller: "PlaylistController"
+      });
 
     $httpProvider.defaults.headers.common = {
       "Content-Type": "application/json"

@@ -1,14 +1,13 @@
 <nav class="main-nav">
 
-  <div class="title">
-    <a class="logo" href="http://spotify.com" alt="Spotify" target="_blank"></a>
+  <div class="title" ui-sref="playlist({ id : 'new' })">
+    <a class="logo" alt="Spotify" target="_blank"></a>
     <small class="subtitle">Playlytics</small>
   </div>
 
   <ul class="playlists">
-    <li class="playlist playlist-selected"><i class="fa fa-fw fa-th-list"></i>&nbsp; Mood Booster</li>
-    <li class="playlist"><i class="fa fa-fw fa-th-list"></i>&nbsp; Weekend Chill­-Out</li>
-    <li class="playlist"><i class="fa fa-fw fa-th-list"></i>&nbsp; Re-Energize</li>
+    <li ng-repeat="playlist in playlists" class="playlist" ui-sref="playlist({ id : playlist.id })" ui-sref-active="playlist-selected"><i class="fa fa-fw fa-th-list"></i>&nbsp; {{ playlist.name }}</li>
+    <li class="playlist" ui-sref="playlist({ id : 'new' })" ui-sref-active="playlist-selected"><i class="fa fa-fw fa-th-list"></i>&nbsp; New Playlist</li>
   </ul>
 
 </nav>
