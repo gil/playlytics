@@ -295,7 +295,7 @@ angular.module("playlytics")
           // Simulating a Promise
           then: function(callback) {
             filter = filter.toLowerCase();
-            console.log( filter );
+            // console.log( filter );
             callback( _.filter(tags, function(tag){ return tag.toLowerCase().indexOf(filter) > -1; }) );
           }
 

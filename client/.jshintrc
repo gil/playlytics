@@ -27,11 +27,13 @@
     "$",
     "_",
     "angular",
+    "jasmine",
     "describe",
     "beforeEach",
     "inject",
     "it",
     "expect",
+    "spyOn",
     "Spinner",
     "amplify"
   ]
