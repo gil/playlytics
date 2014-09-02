@@ -8,7 +8,9 @@ angular.module("playlytics")
     // PlaylistService.save({});
 
     $scope.addTrack = function(track) {
-      $scope.playlist.tracks.push(track);
+      if( !_.findWhere($scope.playlist.tracks, { id : track.id }) ) {
+        $scope.playlist.tracks.push(track);
+      }
     };
 
     $scope.removeTrack = function(track) {

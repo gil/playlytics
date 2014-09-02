@@ -11,6 +11,7 @@ angular.module("playlytics")
           // console.log( track );
 
           return {
+            id : track.id,
             name : track.name,
             artist : ( track.artists && track.artists.length > 0 ? track.artists[0].name : "N/A" ),
             albumName : ( track.album ? track.album.name : null ),

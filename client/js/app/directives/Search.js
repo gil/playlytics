@@ -52,6 +52,7 @@ angular.module("playlytics")
           } else {
 
             scope.tracks = [];
+            scope.selectedTrack = -1;
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(searchAfterDelay, 600);
 
