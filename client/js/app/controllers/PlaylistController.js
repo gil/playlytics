@@ -11,4 +11,8 @@ angular.module("playlytics")
       $scope.playlist.tracks.push(track);
     };
 
+    $scope.removeTrack = function(track) {
+      $scope.playlist.tracks = _.without($scope.playlist.tracks, track);
+    };
+
   });

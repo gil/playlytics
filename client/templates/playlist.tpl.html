@@ -22,7 +22,10 @@
     </thead>
     <tbody ui-sortable ng-model="playlist.tracks">
       <tr class="playlist-track" ng-repeat="track in playlist.tracks">
-        <td>{{ track.name }}</td>
+        <td>
+          {{ track.name }}
+          <i class="fa fa-trash-o remove-track" ng-click="removeTrack(track)"></i>
+        </td>
         <td>{{ track.artist }}</td>
         <td>{{ track.albumName }}</td>
         <td class="track-duration">{{ track.duration | duration }}</td>
