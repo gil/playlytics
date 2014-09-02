@@ -11,6 +11,14 @@ body {
   margin: 20px 20px 20px 270px;
 }
 
+@media only screen and (max-width : 900px), (max-device-width : 900px) {
+
+  .screen {
+    margin: 20px;
+  }
+
+}
+
 button {
   background-color: #84BD00;
   border: 1px solid #84BD00;

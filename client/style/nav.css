@@ -8,6 +8,16 @@
   bottom: 0;
 }
 
+@media only screen and (max-width : 900px), (max-device-width : 900px) {
+
+  .main-nav {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+}
+
 .title {
   cursor: pointer;
   border-bottom: 1px solid #000;
@@ -25,12 +35,14 @@
 }
 
 .subtitle {
-  padding-left: 34px;
+  position: relative;
+  left: 50%;
+  margin-left: -91px;
 }
 
 .playlists {
   border-top: 1px solid #222326;
-  padding: 20px 0 0 0;
+  padding: 20px 0 20px 0;
 }
 
 .playlist {
